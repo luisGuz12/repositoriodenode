@@ -1,14 +1,25 @@
 // 1. Importando el modulo de Node
 // http
 import http from 'http';
-
+//biblioteca
+import path from 'path';
+//recreabdi built-in variables
+global["__dirname"]= path.dirname(new URL(import.meta.url).pathname);
+global["__filename"]= path.join(__dirname, path.basename(new URL(import.meta.url).pathname));
 // 2. Crear el servidor
  //
 const server = http.createServer( (req, res)=>{
     // Toda la logica del server
     // 1. Respondiendo al cliente
-    res.write("Hello from the server... ");
-    // 2. Cerrar la conexion
+  //  res.write(`__dirname: {__$dirname}
+    //__filename: {__$filename}`);
+    res.write("Revisar consola del server....");
+    //creando logger de peticiones 
+    console.log(`📣CLIENT-REQUEST: ${req.method} ${req.url}`);
+    // 1. Respondiendo al cliente
+    console.log(req);
+    // 2. Cerrar la conexion]
+
     rest.end();
 } );
 
